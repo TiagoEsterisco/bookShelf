@@ -33,10 +33,17 @@
     width: 50%;
     display: inline-block; }
 
+.book-page__contrast-background {
+  background: #F4EBD2; }
+
 .book-page__header {
-  background: #F4EBD2;
-  text-shadow: 0 1px 1px white;
-  color: #5C574F; }
+  padding-bottom: 20px; }
+  .book-page__header .title,
+  .book-page__header .subTitle,
+  .book-page__header .description,
+  .book-page__header .genre {
+    text-shadow: 0 1px 1px white;
+    color: #5C574F; }
 
 .book-page__text {
   font-size: 16px; }

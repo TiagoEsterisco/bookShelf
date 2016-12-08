@@ -1,10 +1,18 @@
-<div class="book-page__header">
+<div class="book-page__header book-page__contrast-background">
   <div class="container">
-    <h1>{{book.name}}</h1>
-    <h3>{{book.author.name}}</h5>
     
-    <p>{{book.description}}</p>
-    <p>{{book.genre.category}}, {{book.genre.name}}</p>
+    <a href="/">
+      <span class="fa-stack fa-sm">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-arrow-left fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+
+    <h1 class="title">{{book.name}}</h1>
+    <h3 class="subTitle">{{book.author.name}}</h5>
+    
+    <p class="description">{{book.description}}</p>
+    <p class="genre">{{book.genre.category}}, {{book.genre.name}}</p>
   </div>
 </div>
 
@@ -23,29 +31,13 @@
     <img ng-src="{{book.author.avatar}}" alt="Description" width="100" class="author-avatar" />
     <p>Written by {{book.author.name}}</p>
   </div>
+</div>
 
-  <div>
+<div class="book-page__footer book-page__contrast-background">
+  <div class="container">
     <h1>Similiar Reading</h1>
     
     <div ng-repeat="recommendedBook in recommendedBooks">
-      <div class="col-xs-6 col-sm-4 animated fadeIn">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <a ng-href="#/book/{{recommendedBook.id}}" class="panel-link">  
-              <div class="book-cover" style="background-image: url({{recommendedBook.cover}});"></div>
-              <div class="title">{{recommendedBook.name}}</div>
-              <div class="author">{{recommendedBook.author.name}}</div>
-              <div class="panel-controls">
-                <div class="likes">
-                  <i class="fa fa-heart animated pulse" aria-hidden="true"></i> {{recommendedBook.likes}}
-                </div>
-                <div class="date">{{recommendedBook.published | relativeDate}}</div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
+      <book-preview book="recommendedBook"></book-preview>
   </div>
 </div>

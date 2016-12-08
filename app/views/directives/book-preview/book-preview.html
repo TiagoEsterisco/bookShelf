@@ -1,0 +1,17 @@
+<div class="col-xs-6 col-sm-4 animated fadeIn">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <a ng-href="#/book/{{book.id}}" class="panel-link">  
+        <div class="book-cover" style="background-image: url({{book.cover}});"></div>
+        <div class="title">{{book.name}}</div>
+        <div class="author">{{book.author.name}}</div>
+        <div class="panel-controls">
+          <div class="likes">
+            <i class="fa fa-heart animated pulse" aria-hidden="true"></i> {{book.likes}}
+          </div>
+          <div class="date">{{book.published | relativeDate}}</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

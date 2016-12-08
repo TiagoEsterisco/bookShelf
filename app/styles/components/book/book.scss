@@ -1,7 +1,18 @@
-.book-page__header{
+.book-page__contrast-background{
   background: $primary;
-  text-shadow: 0 1px 1px lighten($primary, 20%);
-  color: $secondary; 
+}
+
+.book-page__header{
+  padding-bottom: 20px;
+
+  .title,
+  .subTitle,
+  .description,
+  .genre{
+    text-shadow: 0 1px 1px lighten($primary, 20%);
+    color: $secondary; 
+  }
+
 }
 
 .book-page__text{

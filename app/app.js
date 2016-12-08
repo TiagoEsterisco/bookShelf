@@ -4,7 +4,8 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.booksList',
-  'myApp.book'
+  'myApp.book',
+  'myApp.bookPreview'
 ])
 
 .constant('BOOKS_LIST', {
