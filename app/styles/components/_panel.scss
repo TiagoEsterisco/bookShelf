@@ -1,0 +1,46 @@
+// Panel overwrite and extend
+.panel{
+  .panel-link{
+    color: $black;
+    background: $white;
+    text-decoration: none;
+  }
+
+  .book-cover{
+    height: 200px; 
+    width: 100%;
+    background-size: cover;
+  }
+
+  .title{
+    font-weight: bold; 
+    font-size:  $font-size-big;
+  }
+  .author{
+    font-size:  $font-size-medium;
+  }
+  
+  .likes{
+    .fa-heart{
+      color: $sadRed;
+      transition: color .3s ease;
+    }
+    &:hover{
+      .fa-heart{
+        color: $happyRed;
+      }
+    }
+  }
+  .date{
+    text-align: right;
+  }
+
+  .panel-controls{
+    white-space: nowrap;
+    .likes,
+    .date{
+      width: 50%;
+      display: inline-block;
+    }
+  }
+}

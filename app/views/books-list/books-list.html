@@ -1,0 +1,58 @@
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <label for="email">Find the best:</label>
+            <select class="form-control" 
+                    ng-model="category" 
+                    ng-options="category as category for category in possibleGenres.categories"
+                    ng-change="categoryFilter()" >
+            <option value="">Category</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="pwd">About:</label>
+            <select class="form-control" 
+                    ng-model="name" 
+                    ng-options="name as name for name in possibleGenres.names"
+                    ng-change="nameFilter()">
+            <option value="">Select</option>
+          </select>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="text" ng-model="searchText" placeholder="Search Books">
+          </div>
+          <div class="form-group">
+            <div class="btn btn-default" ng-click="clearFilter()">Clear Filter</div>
+          </div>
+        </form>
+    </div>
+  </nav>
+
+  <div ng-repeat="book in books | filter: searchText">
+    <div class="col-xs-6 col-sm-4 animated fadeIn">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <a ng-href="#/book/{{book.id}}" class="panel-link">  
+            <div class="book-cover" style="background-image: url({{book.cover}});"></div>
+            <div class="title">{{book.name}}</div>
+            <div class="author">{{book.author.name}}</div>
+            <div class="panel-controls">
+              <div class="likes">
+                <i class="fa fa-heart animated pulse" aria-hidden="true"></i> {{book.likes}}
+              </div>
+              <div class="date">{{book.published | relativeDate}}</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12">
+    <a ng-href="#/books/page/{{prevPage}}" ng-hide="prevPage === false">previous Page</a>
+    <a ng-href="#/books/page/{{nextPage}}" ng-hide="nextPage === false">next Page</a>
+  </div>
+</div>

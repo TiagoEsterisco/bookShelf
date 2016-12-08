@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+.panel .panel-link {
+  color: #000;
+  background: #fff;
+  text-decoration: none; }
+
+.panel .book-cover {
+  height: 200px;
+  width: 100%;
+  background-size: cover; }
+
+.panel .title {
+  font-weight: bold;
+  font-size: 16px; }
+
+.panel .author {
+  font-size: 14px; }
+
+.panel .likes .fa-heart {
+  color: #E2D5D5;
+  transition: color .3s ease; }
+
+.panel .likes:hover .fa-heart {
+  color: #801515; }
+
+.panel .date {
+  text-align: right; }
+
+.panel .panel-controls {
+  white-space: nowrap; }
+  .panel .panel-controls .likes,
+  .panel .panel-controls .date {
+    width: 50%;
+    display: inline-block; }
+
+.book-page__header {
+  background: #F4EBD2;
+  text-shadow: 0 1px 1px white;
+  color: #5C574F; }
+
+.book-page__text {
+  font-size: 16px; }
+
+.book-page__author {
+  text-align: center; }
+  .book-page__author .author-avatar {
+    border-radius: 50%; }
+
+html,
+body {
+  font-family: "Open Sans", sans-serif; }

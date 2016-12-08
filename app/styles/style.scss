@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+
+@import 
+  'components/variables',
+  'components/panel',
+  'components/book/book';
+
+html,
+body{
+  font-family: $font-family;
+}

@@ -1,0 +1,16 @@
+.book-page__header{
+  background: $primary;
+  text-shadow: 0 1px 1px lighten($primary, 20%);
+  color: $secondary; 
+}
+
+.book-page__text{
+  font-size: $font-size-big;
+}
+
+.book-page__author{
+  text-align: center;
+  .author-avatar{
+    border-radius: 50%;
+  }
+}

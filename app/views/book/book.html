@@ -1,0 +1,51 @@
+<div class="book-page__header">
+  <div class="container">
+    <h1>{{book.name}}</h1>
+    <h3>{{book.author.name}}</h5>
+    
+    <p>{{book.description}}</p>
+    <p>{{book.genre.category}}, {{book.genre.name}}</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="book-page__content">
+    <h5>Introduction</h5>
+    <h4><strong>{{book.name}}</strong></h4>
+    <div ng-repeat="introduction in book.introduction">
+      <p class="book-page__text">{{introduction.content}}</p>
+    </div>
+  </div>
+
+  <hr>
+  
+  <div class="book-page__author">
+    <img ng-src="{{book.author.avatar}}" alt="Description" width="100" class="author-avatar" />
+    <p>Written by {{book.author.name}}</p>
+  </div>
+
+  <div>
+    <h1>Similiar Reading</h1>
+    
+    <div ng-repeat="recommendedBook in recommendedBooks">
+      <div class="col-xs-6 col-sm-4 animated fadeIn">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <a ng-href="#/book/{{recommendedBook.id}}" class="panel-link">  
+              <div class="book-cover" style="background-image: url({{recommendedBook.cover}});"></div>
+              <div class="title">{{recommendedBook.name}}</div>
+              <div class="author">{{recommendedBook.author.name}}</div>
+              <div class="panel-controls">
+                <div class="likes">
+                  <i class="fa fa-heart animated pulse" aria-hidden="true"></i> {{recommendedBook.likes}}
+                </div>
+                <div class="date">{{recommendedBook.published | relativeDate}}</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
