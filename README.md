@@ -1,24 +1,27 @@
-# `angular-reedsy`
+# `Angular Reedsy`
 
 
-After downloading the repo: 
+- Please download the repo.
 
-Install dependencies: 
+- Install dependencies: 
 ```
 npm install 
 ```
 
-Run Demo Page: 
+- Run Demo Page: 
 ```
 npm start
 ``` 
-Then go to `http://localhost:8000/`
+App should be running on  `http://localhost:8000/`
 
-Documentation: 
-If Demo page is running: go to `http://localhost:8000/docs/`
+- Documentation: 
 
-Run tests: 
+If Demo page is running: 
+`http://localhost:8000/docs/`
+
+- Run tests: 
 ```
 npm test-single-run
 ```
 
+Thanks 
