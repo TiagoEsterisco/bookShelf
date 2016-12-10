@@ -1,0 +1,96 @@
+<!doctype html><html>  <head>    <meta charset="utf-8">    <base href="../">    <title>JSDoc: source : books-service.js</title>    <link href="css/prettify-tomorrow.css" type="text/css" rel="stylesheet">    <link href="css/site.css" type="text/css" rel="stylesheet">  </head>  <body ng-app="">    <nav id="toc">      <input placeholder="Filter" id="filter-input" class="col12 block field" type="text">      <div class="nav-wrapper">      <h2><a href="index.html">Index</a></h2>      <ul class="module">        <!-- books_ist_ervices -->        <h2 class="module">          <a chref="" ng-click="modulebooks_ist_ervices = !modulebooks_ist_ervices">            module: booksListServices          </a>          <i ng-cloak="" ng-show="modulebooks_ist_ervices">+</i>        </h2>        <li id="booksListServices" ng-hide="modulebooks_ist_ervices">          <ul class="group">            <h2>              <a href="" ng-click="books_ist_ervicesservice = !books_ist_ervicesservice">                service              </a>              <i ng-cloak="" ng-show="books_ist_ervicesservice">+</i>            </h2>            <ul ng-hide="books_ist_ervicesservice">              <li>                <a href="booksListServices.getBook.html">getBook</a>              </li><li>                <a href="booksListServices.getBooks.html">getBooks</a>              </li><li>                <a href="booksListServices.getGenres.html">getGenres</a>              </li><li>                <a href="booksListServices.getRecommendedBooks.html">getRecommendedBooks</a>              </li>            </ul>          </ul>        </li>      </ul><ul class="module">        <!-- my_pp -->        <h2 class="module">          <a chref="" ng-click="modulemy_pp = !modulemy_pp">            module: myApp          </a>          <i ng-cloak="" ng-show="modulemy_pp">+</i>        </h2>        <li id="myApp" ng-hide="modulemy_pp">          <ul class="group">            <h2>              <a href="" ng-click="my_ppservice = !my_ppservice">                service              </a>              <i ng-cloak="" ng-show="my_ppservice">+</i>            </h2>            <ul ng-hide="my_ppservice">              <li>                <a href="myApp.booksListServices.html">booksListServices</a>              </li>            </ul>          </ul>        </li>      </ul>      </div>    </nav>    <div id="content" class="page-wrap">      <h1 class="title">        source : books-service.js      </h1>      <div id="main" class="big-container">        <!-- source code html -->        <article>          <pre class="prettyprint source linenums"><code>'use strict';
+angular.module('myApp.booksService', [])
+/**
+ * @ngdoc service
+ * @name booksListServices
+ * @memberof myApp
+ * @param {service} $http angular http request
+ * @param {service} $q angular angular promises
+ * @description 
+ *   Deals with all Books / Book requests
+ */
+.service('booksListServices', ['$http','$q', function($http, $q) {
+  /**
+   * @ngdoc service
+   * @memberof booksListServices
+   * @name getBooks
+   * @description 
+   *   Get full list of books
+   * @returns {Object} Books list  
+   */
+  this.getBooks = function() {
+    return $http.get('/api/books.json');
+  };
+  /**
+   * @ngdoc service
+   * @memberof booksListServices
+   * @name getGenres
+   * @description 
+   *   Get full list of Genres
+   * @returns {Object} List of possible genres: Categories and Names
+   */
+  this.getGenres = function(){
+    var deferred = $q.defer();
+    var possibleGenres = {
+      categories: [],
+      names: []
+    };
+    $http.get('/api/books.json').then(function(response){
+      angular.forEach(response.data, function(book, index){
+        if(possibleGenres.names.indexOf(book.genre.name) == -1){
+          possibleGenres.names.push(book.genre.name);
+        }
+        if(possibleGenres.categories.indexOf(book.genre.category) == -1){
+          possibleGenres.categories.push(book.genre.category);
+        }
+      });
+      deferred.resolve(possibleGenres);
+    });
+    return deferred.promise;
+  };
+  /**
+   * @ngdoc service
+   * @memberof booksListServices
+   * @name getBook
+   * @param {Integer} Book id
+   * @description 
+   *   Get Book by Id
+   * @returns {Object} Book
+   */
+  this.getBook = function(id){
+    var deferred = $q.defer();
+    $http.get('/api/books.json').then(function(response){
+      angular.forEach(response.data, function(book, index){
+        if(book.id === id){
+          deferred.resolve(book);
+        }
+      });
+    });
+    return deferred.promise;
+  };
+  /**
+   * @ngdoc service
+   * @memberof booksListServices
+   * @name getRecommendedBooks
+   * @param {Object} Selected Book
+   * @description 
+   *   Get recommended books, by comparing selected book genres.
+   * @returns {Array} List of books with the same genre.
+   */
+  this.getRecommendedBooks = function(selectedBook){
+    var deferred = $q.defer();
+    var recommendations = [];
+    $http.get('/api/books.json').then(function(response){
+      angular.forEach(response.data, function(book, index){
+        if( selectedBook.genre.category === book.genre.category && 
+            selectedBook.genre.name === book.genre.name && 
+            selectedBook.id !== book.id 
+          ){
+          recommendations.push(book);
+        }
+      });
+      deferred.resolve(recommendations);
+    });
+    return deferred.promise;
+  };
+}])</code></pre>        </article>        <!-- index.html -->        <!-- class files -->      </div>      <footer style="clear:both">        Documentation generated by        <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>        using        <a href="https://github.com/allenhwkim/angular-jsdoc">Angular-JSDoc template</a>      </footer>    </div>    <script src="js/prettify.js"></script>    <script src="js/angular.min.js"></script>    <script src="js/site.js"></script>    <!--%= prettyJson %-->    <script>      prettyPrint();      var lineNo = window.location.hash.match(/#line([0-9]+)$/);      lineNo && document.querySelector("ol li:nth-child("+(lineNo[1])+")").scrollIntoView();    </script>  </body></html>

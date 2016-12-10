@@ -12,8 +12,12 @@ Run Demo Page:
 ```
 npm start
 ``` 
+Then go to `http://localhost:8000/`
 
-Run tests ( there is only one ): 
+Documentation: 
+If Demo page is running: go to `http://localhost:8000/docs/`
+
+Run tests: 
 ```
 npm test-single-run
 ```
